@@ -3,7 +3,8 @@ import React, { useRef, Suspense, useEffect } from "react";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { ChakraProvider, Progress } from "@chakra-ui/react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 function CameraController() {
   let { camera, gl } = useThree();
@@ -26,7 +27,11 @@ function RenderComponent() {
   const gltf = useLoader(GLTFLoader, window.modelUrl);
   // useFrame((state, delta) => (ref.current.rotation.x += 0.01));
   return (
-    <Canvas>
+    <Canvas
+      style={{
+        minHeight: "600px",
+      }}
+    >
       <CameraController />
       <ambientLight />
       <pointLight position={[10, 10, 10]} castShadow />
@@ -35,11 +40,24 @@ function RenderComponent() {
   );
 }
 
+function CircularIndeterminate() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        minHeight: "600px",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <CircularProgress style={{ color: "#020d2e" }} />
+    </Box>
+  );
+}
+
 ReactDOM.render(
-  <ChakraProvider>
-    <Suspense fallback={<Progress size="lg" isIndeterminate />}>
-      <RenderComponent />
-    </Suspense>
-  </ChakraProvider>,
+  <Suspense fallback={<CircularIndeterminate />}>
+    <RenderComponent />
+  </Suspense>,
   document.getElementById("root")
 );
