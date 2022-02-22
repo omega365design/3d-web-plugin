@@ -45,7 +45,6 @@ function CircularIndeterminate() {
     <Box
       sx={{
         display: "flex",
-        minHeight: "600px",
         justifyContent: "center",
         alignItems: "center",
       }}
