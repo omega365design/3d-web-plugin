@@ -27,11 +27,7 @@ function RenderComponent() {
   const gltf = useLoader(GLTFLoader, window.modelUrl);
   // useFrame((state, delta) => (ref.current.rotation.x += 0.01));
   return (
-    <Canvas
-      style={{
-        minHeight: "600px",
-      }}
-    >
+    <Canvas>
       <CameraController />
       <ambientLight />
       <pointLight position={[10, 10, 10]} castShadow />
