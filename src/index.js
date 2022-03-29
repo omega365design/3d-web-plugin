@@ -48,7 +48,6 @@ function CircularIndeterminate() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "400px"
       }}
     >
       <CircularProgress style={{ color: "#020d2e" }} />
